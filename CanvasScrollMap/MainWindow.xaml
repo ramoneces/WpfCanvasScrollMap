@@ -1,0 +1,21 @@
+﻿<Window x:Class="CanvasScrollMap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CanvasScrollMap"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer x:Name="Scroll" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" ScrollChanged="Scroll_ScrollChanged">
+            <local:SolutionMap Width="3000" Solution="{Binding Solution}"></local:SolutionMap>
+        </ScrollViewer>
+        <local:SolutionMapScroll SelectionXChanged="MapScroll_SelectionXChanged" x:Name="MapScroll" Grid.Row="1" Height="100" Solution="{Binding Solution}"></local:SolutionMapScroll>
+        <Button Name="GenerateButton" Content="Generate" Click="GenerateButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
